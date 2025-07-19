@@ -12,3 +12,4 @@ pyarrow
 plotnine
 plotly
 shinywidgets
+ridgeplot
