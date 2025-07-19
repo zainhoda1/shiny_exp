@@ -11,3 +11,4 @@ polars
 pyarrow
 plotnine
 plotly
+shinywidgets
