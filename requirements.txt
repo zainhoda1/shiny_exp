@@ -10,3 +10,4 @@ matplotlib
 polars
 pyarrow
 plotnine
+plotly
