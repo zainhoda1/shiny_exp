@@ -54,7 +54,7 @@ app_ui = ui.page_auto(
 
     ),
     ui.include_css(app_dir / "styles.css"),
-    title="MTcars dashboard",
+    title="Vehicle Dashboard",
     fillable=True,
 )
 
@@ -90,7 +90,7 @@ def server(input, output, session):
         
     # Set titles and labels using plt or ax
         plt.title("Horsepower vs MPG (size = weight, color = region)")
-        plt.xlabel("Miles per Gallon")
+        plt.xlabel("Miles per Gallon (MPG)")
         plt.ylabel("Horsepower")
     
     # Move legend outside the plot area
@@ -140,8 +140,8 @@ def server(input, output, session):
         
 
     # Set titles and labels using plt or ax
-        plt.title("Miles per Gallon vs Quarter Mile Time (size = weight, color = region)")
-        plt.xlabel("Miles per Gallon")
+        plt.title("Quarter Mile Time vs MPG (size = weight, color = region)")
+        plt.xlabel("Miles per Gallon (MPG)")
         plt.ylabel("Quarter Mile Time")
     
     # Move legend outside the plot area
@@ -193,8 +193,8 @@ def server(input, output, session):
         )
         
     # Set titles and labels using plt or ax
-        plt.title("MPG vs Horsepower (size = weight, color = region)")
-        plt.xlabel("Miles per Gallon")
+        plt.title("Horsepower vs MPG (size = weight, color = region)")
+        plt.xlabel("Miles per Gallon (MPG)")
         plt.ylabel("Horsepower")
 
     
@@ -221,8 +221,8 @@ def server(input, output, session):
         )
         
     # Set titles and labels using plt or ax
-        plt.title("Miles per Gallon vs Quarter Mile Time (size = weight, color = region)")
-        plt.xlabel("Miles per Gallon")
+        plt.title("Quarter Mile Time vs MPG (size = weight, color = region)")
+        plt.xlabel("Miles per Gallon (MPG)")
         plt.ylabel("Quarter Mile Time")
     
 
