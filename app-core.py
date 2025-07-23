@@ -18,6 +18,7 @@ import pandas as pd
 import numpy as np
 from ridgeplot import ridgeplot
 import matplotlib.pyplot as plt
+import uuid
 
 # Prepare the data
 print(Path(__file__).parent)
@@ -42,6 +43,9 @@ df1 = df1.rename(columns=column_mapping)
 
 app_ui = ui.page_auto(
     ui.sidebar(
+        #ui.h5("Unique Key :"),
+        ui.h5("Unique Key:", style="font-weight: bold;"),
+        ui.output_text_verbatim("text"),
         ui.input_select("var1", "X Axis", choices=["Miles per Gallon","No of cylinders","Displacement (cu.in.)","Horsepower","WEIGHT (1000 lbs)","1/4 mile time"],),
         ui.input_select("var2", "Y Axis", choices=["Miles per Gallon","No of cylinders","Displacement (cu.in.)","Horsepower","WEIGHT (1000 lbs)","1/4 mile time"]),
             ),  
@@ -70,6 +74,13 @@ def server(input, output, session):
     )
 
     chat = ui.Chat(id="chat")
+
+    @render.text  
+    def text():
+        return str(uuid.uuid4())
+
+
+    #session_id = str(uuid.uuid4())  #generating session ID
 
     # Generate a response when the user submits a message
     @chat.on_user_submit
