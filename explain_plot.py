@@ -17,6 +17,7 @@ counter = 0  # Never re-use the same chat ID
 async def explain_plot(
     chat_session: chatlas.Chat,
     plot_widget,  # Can be either Plotly FigureWidget or matplotlib figure wrapper
+    plot_type: str = "plot"  # Added parameter to identify plot type
 ) -> None:
     try:
         with tempfile.TemporaryFile() as f:
