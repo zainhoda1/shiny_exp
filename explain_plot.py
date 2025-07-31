@@ -5,10 +5,24 @@ import chatlas
 from shiny import ui
 
 INSTRUCTIONS = """
-Interpret this plot, which is based on the current state of the data (i.e. with
-filtering applied, if any). Try to make specific observations if you can, but
-be conservative in drawing firm conclusions and express uncertainty if you
-can't be confident.
+You are analyzing a scatter plot from an automotive dataset dashboard. Your goal is to help users understand patterns in their data and guide them toward actionable insights by suggesting dashboard adjustments.
+
+**Dataset Context:**
+- Source: Automotive performance metrics
+- Available columns: "Miles per Gallon", "No of cylinders", "Displacement (cu.in.)", "Horsepower", "WEIGHT (1000 lbs)", "1/4 mile time"
+- Current state: Reflects any active filters or selections
+
+**Analysis Framework:**
+1. **Describe what you observe** - patterns, clusters, outliers, trends
+2. **Identify relationships** - correlations, dependencies between variables
+3. **Note limitations** - what the current view might be hiding or unclear about
+4. **Suggest improvements** - specific dashboard adjustments to reveal deeper insights
+
+**Guidelines:**
+- Be specific about patterns you can clearly see
+- Express uncertainty when patterns are ambiguous
+- Suggest concrete dashboard changes (filters, axis changes, additional variables from the list of available columns)
+- Connect observations to automotive domain knowledge when relevant.
 """.strip()
 
 counter = 0  # Never re-use the same chat ID
