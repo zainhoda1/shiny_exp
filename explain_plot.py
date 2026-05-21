@@ -6,11 +6,11 @@ import chatlas
 from shiny import ui
 
 INSTRUCTIONS = """
-You are analyzing a scatter plot from an automotive dataset dashboard. Your goal is to help users understand patterns in their data and guide them toward actionable insights by suggesting dashboard adjustments.
+You are analyzing a scatter plot from an dinosaur dataset dashboard. Your goal is to help users understand patterns in their data and guide them toward actionable insights by suggesting dashboard adjustments.
 
 **Dataset Context:**
 - Source: Automotive performance metrics
-- Available columns: "Miles per Gallon", "No of cylinders", "Displacement (cu.in.)", "Horsepower", "WEIGHT (1000 lbs)", "1/4 mile time"
+- Available columns: "Dinosaur Species", "Habitat", "Weight (kg)", "Bill Length (cm)", "Speed (Kilometers per hour)", "Claw Length (cm)", "Sex"
 - Current state: Reflects any active filters or selections
 
 **Analysis Framework:**
@@ -35,27 +35,32 @@ async def explain_plot(
     plot_type: str = "plot"  # Added parameter to identify plot type
 ) -> None:
     try:
-        with tempfile.TemporaryFile() as f:
-            plot_widget.write_image(f)
-            f.seek(0)
-            img_b64 = base64.b64encode(f.read()).decode("utf-8")
+        tmp_fd, tmp_path = tempfile.mkstemp(suffix=".png")
+        try:
+            with os.fdopen(tmp_fd, "wb") as f:
+                plot_widget.write_image(f)
+
+            with open(tmp_path, "rb") as f:
+                img_b64 = base64.b64encode(f.read()).decode("utf-8")
             img_url = f"data:image/png;base64,{img_b64}"
 
-        global counter
-        counter += 1
-        chat_id = f"explain_plot_chat_{counter}"
-        chat = ui.Chat(id=chat_id)
+            global counter
+            counter += 1
+            chat_id = f"explain_plot_chat_{counter}"
+            chat = ui.Chat(id=chat_id)
 
-        # TODO: Call chat.destroy() when the modal is dismissed?
-        dialog = make_modal_dialog(img_url, ui.chat_ui(id=chat_id, height="100%"))
-        ui.modal_show(dialog)
+            # TODO: Call chat.destroy() when the modal is dismissed?
+            dialog = make_modal_dialog(img_url, ui.chat_ui(id=chat_id, height="100%"))
+            ui.modal_show(dialog)
 
-        async def ask(*user_prompt: str | chatlas.types.Content):
-            resp = await chat_session.stream_async(*user_prompt)
-            await chat.append_message_stream(resp)
+            async def ask(*user_prompt: str | chatlas.types.Content):
+                resp = await chat_session.stream_async(*user_prompt)
+                await chat.append_message_stream(resp)
 
-        # Ask the initial question
-        await ask(INSTRUCTIONS, chatlas.content_image_url(img_url))
+            # Ask the initial question
+            await ask(INSTRUCTIONS, chatlas.content_image_file(tmp_path))
+        finally:
+            os.unlink(tmp_path)
 
         # Allow followup questions
         @chat.on_user_submit

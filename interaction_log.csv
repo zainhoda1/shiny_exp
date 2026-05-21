@@ -9,3 +9,23 @@ timestamp,session_id,event_type,value
 2026-05-21T02:45:29.148254,606b68f0-9e97-416b-8400-3e6c103ee719,x_axis_change,Sex
 2026-05-21T02:45:32.613162,606b68f0-9e97-416b-8400-3e6c103ee719,x_axis_change,Claw Length (cm)
 2026-05-21T02:45:47.403160,606b68f0-9e97-416b-8400-3e6c103ee719,button_click,explain_plot_btn
+2026-05-21T03:07:47.817481,573ea7fa-a867-40ec-a81c-5687eef22bdc,x_axis_change,Dinosaur Species
+2026-05-21T03:07:47.818065,573ea7fa-a867-40ec-a81c-5687eef22bdc,y_axis_change,Dinosaur Species
+2026-05-21T03:08:49.827679,15daaee1-c678-4766-8ef2-08b9180d11f4,x_axis_change,Dinosaur Species
+2026-05-21T03:08:49.828302,15daaee1-c678-4766-8ef2-08b9180d11f4,y_axis_change,Dinosaur Species
+2026-05-21T03:08:55.956677,15daaee1-c678-4766-8ef2-08b9180d11f4,x_axis_change,Habitat
+2026-05-21T03:08:58.845494,15daaee1-c678-4766-8ef2-08b9180d11f4,y_axis_change,Speed (Kilometers per hour)
+2026-05-21T03:09:02.293375,15daaee1-c678-4766-8ef2-08b9180d11f4,x_axis_change,Claw Length (cm)
+2026-05-21T03:09:08.680786,15daaee1-c678-4766-8ef2-08b9180d11f4,x_axis_change,Bill Length (cm)
+2026-05-21T03:09:15.954436,15daaee1-c678-4766-8ef2-08b9180d11f4,button_click,explain_plot_btn
+2026-05-21T03:10:07.780548,15daaee1-c678-4766-8ef2-08b9180d11f4,y_axis_change,Claw Length (cm)
+2026-05-21T03:10:09.906669,15daaee1-c678-4766-8ef2-08b9180d11f4,button_click,explain_plot_btn
+2026-05-21T03:21:48.736606,af9070df-b7ae-4232-8566-3bc4ecedf10c,x_axis_change,Dinosaur Species
+2026-05-21T03:21:48.737198,af9070df-b7ae-4232-8566-3bc4ecedf10c,y_axis_change,Dinosaur Species
+2026-05-21T03:25:23.524243,ab948d82-8371-4c9d-ab18-7e3965e29493,x_axis_change,Dinosaur Species
+2026-05-21T03:25:23.524842,ab948d82-8371-4c9d-ab18-7e3965e29493,y_axis_change,Dinosaur Species
+2026-05-21T03:25:48.851941,ab948d82-8371-4c9d-ab18-7e3965e29493,button_click,explain_plot_btn
+2026-05-21T03:26:23.865439,ab948d82-8371-4c9d-ab18-7e3965e29493,x_axis_change,Weight (kg)
+2026-05-21T03:26:27.192915,ab948d82-8371-4c9d-ab18-7e3965e29493,y_axis_change,Speed (Kilometers per hour)
+2026-05-21T03:26:30.627423,ab948d82-8371-4c9d-ab18-7e3965e29493,button_click,explain_plot_btn
+2026-05-21T03:27:26.002919,ab948d82-8371-4c9d-ab18-7e3965e29493,x_axis_change,Claw Length (cm)
