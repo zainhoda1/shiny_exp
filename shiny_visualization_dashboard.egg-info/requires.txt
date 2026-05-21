@@ -1,0 +1,21 @@
+shiny>=0.6.0
+pandas>=1.5.0
+numpy>=1.24.0
+plotly>=5.15.0
+opencv-python>=4.8.0
+pyautogui>=0.9.54
+seaborn>=0.12.0
+matplotlib>=3.7.0
+faicons>=0.2.0
+chatlas>=0.1.0
+python-dotenv>=1.0.0
+shinywidgets>=0.3.0
+
+[:python_version < "3.4"]
+pathlib2>=2.3.0
+
+[dev]
+pytest>=7.0.0
+black>=23.0.0
+flake8>=6.0.0
+mypy>=1.0.0

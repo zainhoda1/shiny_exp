@@ -1,0 +1,11 @@
+timestamp,session_id,event_type,value
+2026-05-21T02:44:34.760441,7a3298f1-7b0c-485b-a353-5b75af8c10b7,x_axis_change,Dinosaur Species
+2026-05-21T02:44:34.761114,7a3298f1-7b0c-485b-a353-5b75af8c10b7,y_axis_change,Dinosaur Species
+2026-05-21T02:44:38.931184,606b68f0-9e97-416b-8400-3e6c103ee719,x_axis_change,Dinosaur Species
+2026-05-21T02:44:38.931776,606b68f0-9e97-416b-8400-3e6c103ee719,y_axis_change,Dinosaur Species
+2026-05-21T02:45:03.665743,606b68f0-9e97-416b-8400-3e6c103ee719,x_axis_change,Habitat
+2026-05-21T02:45:11.348231,606b68f0-9e97-416b-8400-3e6c103ee719,x_axis_change,Weight (kg)
+2026-05-21T02:45:17.323767,606b68f0-9e97-416b-8400-3e6c103ee719,y_axis_change,Speed (Kilometers per hour)
+2026-05-21T02:45:29.148254,606b68f0-9e97-416b-8400-3e6c103ee719,x_axis_change,Sex
+2026-05-21T02:45:32.613162,606b68f0-9e97-416b-8400-3e6c103ee719,x_axis_change,Claw Length (cm)
+2026-05-21T02:45:47.403160,606b68f0-9e97-416b-8400-3e6c103ee719,button_click,explain_plot_btn

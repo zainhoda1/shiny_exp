@@ -19,21 +19,34 @@ import numpy as np
 from ridgeplot import ridgeplot
 import matplotlib.pyplot as plt
 import uuid
+import csv
+from datetime import datetime
+
+LOG_FILE = Path(__file__).parent / "interaction_log.csv"
+
+def log_event(session_id: str, event_type: str, value: str):
+    file_exists = LOG_FILE.exists()
+    with open(LOG_FILE, "a", newline="", encoding="utf-8") as f:
+        writer = csv.writer(f)
+        if not file_exists:
+            writer.writerow(["timestamp", "session_id", "event_type", "value"])
+        writer.writerow([datetime.now().isoformat(), session_id, event_type, value])
 
 # Prepare the data
 print(Path(__file__).parent)
 location = Path(__file__).parent
-file_name = 'mtcars.csv'
+file_name = 'dinosaurs.csv'  #'mtcars.csv' 
 image_file_path = location / file_name
 df1 = pd.read_csv(image_file_path)
 
 column_mapping = {
-    "mpg": "Miles per Gallon",
-    "cyl": "No of cylinders", 
-    "disp": "Displacement (cu.in.)",
-    "hp": "Horsepower",
-    "WEIGHT (1000 lbs)": "WEIGHT (1000 lbs)",  # Already correct
-    "qsec": "1/4 mile time"
+    "species": "Dinosaur Species",
+    "habitat": "Habitat", 
+    "weight_kg": "Weight (kg)",
+    "bill_length_cm": "Bill Length (cm)",
+    "speed_kph": "Speed (Kilometers per hour)",  # Already correct
+    "claw_length_cm": "Claw Length (cm)",
+    "sex" : "Sex"
 }
 
 # Apply the renaming
@@ -46,8 +59,8 @@ app_ui = ui.page_auto(
         #ui.h5("Unique Key :"),
         ui.h5("Unique Key:", style="font-weight: bold;"),
         ui.output_text_verbatim("text"),
-        ui.input_select("var1", "X Axis", choices=["Miles per Gallon","No of cylinders","Displacement (cu.in.)","Horsepower","WEIGHT (1000 lbs)","1/4 mile time"],),
-        ui.input_select("var2", "Y Axis", choices=["Miles per Gallon","No of cylinders","Displacement (cu.in.)","Horsepower","WEIGHT (1000 lbs)","1/4 mile time"]),
+        ui.input_select("var1", "X Axis", choices=["Dinosaur Species", "Habitat", "Weight (kg)", "Bill Length (cm)", "Speed (Kilometers per hour)", "Claw Length (cm)", "Sex"],),
+        ui.input_select("var2", "Y Axis", choices=["Dinosaur Species", "Habitat", "Weight (kg)", "Bill Length (cm)", "Speed (Kilometers per hour)", "Claw Length (cm)", "Sex"]),
             ),  
     ui.layout_columns(
         ui.card(
@@ -62,7 +75,7 @@ app_ui = ui.page_auto(
 
     ),
     ui.include_css(app_dir / "styles.css"),
-    title="Vehicle Dashboard",
+    title="Dinosaur Dashboard",
     fillable=True,
 )
 
@@ -75,12 +88,20 @@ def server(input, output, session):
 
     chat = ui.Chat(id="chat")
 
-    @render.text  
+    session_id = str(uuid.uuid4())
+
+    @render.text
     def text():
-        return str(uuid.uuid4())
+        return session_id
 
+    # Log X/Y axis dropdown changes
+    @reactive.effect
+    def _log_var1():
+        log_event(session_id, "x_axis_change", input.var1())
 
-    #session_id = str(uuid.uuid4())  #generating session ID
+    @reactive.effect
+    def _log_var2():
+        log_event(session_id, "y_axis_change", input.var2())
 
     # Generate a response when the user submits a message
     @chat.on_user_submit
@@ -97,14 +118,14 @@ def server(input, output, session):
             data=df1,
             x=input.var1(),
             y=input.var2(),
-            size='WEIGHT (1000 lbs)',
-            hue='REGION',
+            size='Weight (kg)',
+            hue='Dinosaur Species',
             sizes=(20, 200),  # adjust size range as per your preference
             alpha=0.7
         )
         
     # Set titles and labels using plt or ax
-        plt.title(f"{input.var2()} vs {input.var1()} (size = weight, color = region)")
+        plt.title(f"{input.var2()} vs {input.var1()} (size = weight_kg, color = species)")
         plt.xlabel(f"{input.var1()}")
         plt.ylabel(f"{input.var2()}")
     
@@ -130,6 +151,7 @@ def server(input, output, session):
     @reactive.effect
     @reactive.event(input.explain_plot_btn)
     async def handle_explain_plot():
+        log_event(session_id, "button_click", "explain_plot_btn")
         try:
             plot_widget = create_plot_widget()
             await explain_plot(chat_client, plot_widget, plot_type ="horsepower_vs_mpg")
@@ -148,15 +170,15 @@ def server(input, output, session):
             data=df1,
             x=input.var1(),
             y=input.var2(),
-            size='WEIGHT (1000 lbs)',
-            hue='REGION',
+            size='Weight (kg)',
+            hue='Dinosaur Species',
             sizes=(20, 200),  # adjust size range as per your preference
             alpha=0.7
         )
         
     # Set titles and labels using plt or ax
         #title=f'Data Visualization ({input.embedding_type().split("_")[1].upper()} Embedding)')
-        plt.title(f"{input.var2()} vs {input.var1()} (size = weight, color = region)")
+        plt.title(f"{input.var2()} vs {input.var1()} (size = weight_kg, color = species)")
         plt.xlabel(f"{input.var1()}")
         plt.ylabel(f"{input.var2()}")
 

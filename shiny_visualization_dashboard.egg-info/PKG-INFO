@@ -1,0 +1,35 @@
+Metadata-Version: 2.4
+Name: shiny-visualization-dashboard
+Version: 0.1.0
+Summary: A Shiny dashboard for data visualization with AI-powered chart analysis
+Author-email: Your Name <your.email@example.com>
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Requires-Python: <3.13,>=3.9
+Description-Content-Type: text/markdown
+Requires-Dist: shiny>=0.6.0
+Requires-Dist: pandas>=1.5.0
+Requires-Dist: numpy>=1.24.0
+Requires-Dist: plotly>=5.15.0
+Requires-Dist: opencv-python>=4.8.0
+Requires-Dist: pyautogui>=0.9.54
+Requires-Dist: seaborn>=0.12.0
+Requires-Dist: matplotlib>=3.7.0
+Requires-Dist: faicons>=0.2.0
+Requires-Dist: chatlas>=0.1.0
+Requires-Dist: python-dotenv>=1.0.0
+Requires-Dist: shinywidgets>=0.3.0
+Requires-Dist: pathlib2>=2.3.0; python_version < "3.4"
+Provides-Extra: dev
+Requires-Dist: pytest>=7.0.0; extra == "dev"
+Requires-Dist: black>=23.0.0; extra == "dev"
+Requires-Dist: flake8>=6.0.0; extra == "dev"
+Requires-Dist: mypy>=1.0.0; extra == "dev"
+
+# shiny_exp
